@@ -3,17 +3,28 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx dev",
+    "dev": "PORT=3002 nx dev",
     "build": "nx build",
     "start": "nx start",
     "test": "nx test"
   },
   "private": true,
   "dependencies": {
+    "@arctic-kit/icons": "^0.18.3",
+    "@arctic-kit/snow": "^0.18.3",
+    "@floating-ui/react": "^0.26.23",
+    "@pigment-css/react": "^0.0.22",
+    "framer-motion": "^11.5.4",
+    "immutability-helper": "^3.1.1",
     "next": "14.2.3",
+    "pdf-lib": "^1.17.1",
     "react": "18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.3.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "utif": "^3.1.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@nx/eslint": "19.7.3",
@@ -22,6 +33,7 @@
     "@nx/js": "19.7.3",
     "@nx/next": "19.7.3",
     "@nx/workspace": "19.7.3",
+    "@pigment-css/nextjs-plugin": "^0.0.22",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -29,6 +41,8 @@
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
+    "@types/utif": "^3",
+    "@types/uuid": "^10",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "babel-jest": "^29.7.0",
