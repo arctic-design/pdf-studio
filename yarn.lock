@@ -22,16 +22,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arctic-kit/icons@npm:^0.18.3":
-  version: 0.18.3
-  resolution: "@arctic-kit/icons@npm:0.18.3"
-  checksum: 10c0/983e3241ea97e429b8e6d2bd6c80083b19e3e39bd5b09aa1ff64792abf2be8e17db312708481095e6644d9b2e0abbf3a9df515d0551c4de90c81dae67ed76d92
+"@arctic-kit/icons@npm:^0.18.4":
+  version: 0.18.4
+  resolution: "@arctic-kit/icons@npm:0.18.4"
+  checksum: 10c0/0ea176adb0cf97a186fdc1ba5c9dcb39adb630f37336c6ad27400a271951cf65527fc94d75473a45f32fe0b9568a733451916f56e27c16dd4ed0419c25f4331a
   languageName: node
   linkType: hard
 
-"@arctic-kit/snow@npm:^0.18.3":
-  version: 0.18.3
-  resolution: "@arctic-kit/snow@npm:0.18.3"
+"@arctic-kit/snow@npm:^0.18.4":
+  version: 0.18.4
+  resolution: "@arctic-kit/snow@npm:0.18.4"
   peerDependencies:
     "@floating-ui/react": ^0.26.19
     framer-motion: ^11.3.19
@@ -42,7 +42,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/e32793020c153754d643a32d88c872d681956330fafb46733196f43b4a718f7c7617d674840e454b791485a89dc21faae7cd7a61e319a99457f6e9f152cc4b4d
+  checksum: 10c0/639e08eb6b2631aa0e7454bd91f9e2cc608b884b7985907f185b628f6df49bb2b662ea6b115c73d3ce6d051e624461d95996b9980dd901ba3bfbb4d2b3565fe7
   languageName: node
   linkType: hard
 
@@ -3078,8 +3078,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pdf-studio/source@workspace:."
   dependencies:
-    "@arctic-kit/icons": "npm:^0.18.3"
-    "@arctic-kit/snow": "npm:^0.18.3"
+    "@arctic-kit/icons": "npm:^0.18.4"
+    "@arctic-kit/snow": "npm:^0.18.4"
     "@floating-ui/react": "npm:^0.26.23"
     "@nx/eslint": "npm:19.7.3"
     "@nx/eslint-plugin": "npm:19.7.3"

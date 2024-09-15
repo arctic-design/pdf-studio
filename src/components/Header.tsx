@@ -1,6 +1,6 @@
 import { styled } from '@pigment-css/react';
 import { ColorSchemeSwitch } from './ColorSchemeSwitch';
-import Image from 'next/image';
+import { Logo } from './Logo';
 
 const HeaderContainer = styled.div({
   display: 'flex',
@@ -16,19 +16,22 @@ const LeftPanel = styled.div({
   alignItems: 'center',
   justifyContent: 'flex-start',
   gap: 12,
+
+  '.title': {
+    fontWeight: 700,
+    fontSize: 18,
+  },
+
+  svg: {
+    width: 24,
+  },
 });
 export function Header() {
   return (
     <HeaderContainer>
       <LeftPanel>
-        <Image
-          alt="app logo"
-          src={`/icon.svg`}
-          width={24}
-          height={24}
-          priority
-        />
-        <span>PDF Studio</span>
+        <Logo width={32} height={32} />
+        <span className="title">PDF Studio</span>
       </LeftPanel>
       <ColorSchemeSwitch />
     </HeaderContainer>
