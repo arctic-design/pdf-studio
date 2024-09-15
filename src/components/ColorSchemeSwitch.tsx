@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import DayIcon from './DayIcon';
 import NightIcon from './NightIcon';
-import { IconButton } from '@arctic-kit/snow';
+import { SegmentedControl, SegmentedControlButton } from '@arctic-kit/snow';
 
 export function ColorSchemeSwitch() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -20,23 +20,30 @@ export function ColorSchemeSwitch() {
     }
   }, []);
 
-  const toggleTheme = () => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.classList.remove('theme-dark');
-      root.classList.add('theme-light');
-      localStorage.setItem('theme', 'light');
-    } else {
-      root.classList.remove('theme-light');
-      root.classList.add('theme-dark');
-      localStorage.setItem('theme', 'dark');
+  const toggleTheme = (darkMode: boolean) => {
+    if (isDarkMode !== darkMode) {
+      const root = document.documentElement;
+      if (isDarkMode) {
+        root.classList.remove('theme-dark');
+        root.classList.add('theme-light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        root.classList.remove('theme-light');
+        root.classList.add('theme-dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      setIsDarkMode(!isDarkMode);
     }
-    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <IconButton onClick={toggleTheme} size="medium">
-      {isDarkMode ? <DayIcon /> : <NightIcon />}
-    </IconButton>
+    <SegmentedControl initialSelectedIndex={isDarkMode ? 1 : 0}>
+      <SegmentedControlButton index={0} onClick={() => toggleTheme(false)}>
+        <DayIcon />
+      </SegmentedControlButton>
+      <SegmentedControlButton index={1} onClick={() => toggleTheme(true)}>
+        <NightIcon />
+      </SegmentedControlButton>
+    </SegmentedControl>
   );
 }

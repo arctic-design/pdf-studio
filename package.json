@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@arctic-kit/icons": "^0.18.3",
-    "@arctic-kit/snow": "^0.18.3",
+    "@arctic-kit/icons": "^0.18.4",
+    "@arctic-kit/snow": "^0.18.4",
     "@floating-ui/react": "^0.26.23",
     "@pigment-css/react": "^0.0.22",
     "framer-motion": "^11.5.4",
