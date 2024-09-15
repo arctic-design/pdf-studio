@@ -1,6 +1,7 @@
 {
   "name": "@pdf-studio/source",
   "version": "0.0.0",
+  "author": "Barun Prasad",
   "license": "MIT",
   "scripts": {
     "dev": "PORT=3002 nx dev",

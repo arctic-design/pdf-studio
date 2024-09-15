@@ -9,6 +9,8 @@
     #f9fcfe 50%,
     #f0f9ff 100%
   );
+
+  --canvas-panel-bg: var(--snow-colors-grey-900);
 }
 
 * {
@@ -31,6 +33,12 @@ body {
   svg {
     width: 1rem;
   }
+  main {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    height: 100%;
+  }
 }
 
 /* Light Theme */
@@ -41,9 +49,10 @@ body {
     #f9fcfe 50%,
     #f0f9ff 100%
   );
+  --canvas-panel-bg: var(--snow-colors-grey-900);
 }
 
-/* Dark Theme */
 .theme-dark {
   --background-gradient: var(--snow-colors-neutral-0);
+  --canvas-panel-bg: var(--snow-colors-grey-50);
 }
