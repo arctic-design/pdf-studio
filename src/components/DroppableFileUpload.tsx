@@ -16,7 +16,9 @@ type DroppableFileUploadProps = {
 };
 
 const DroppableStyle = css({
-  height: 160,
+  '@media (min-width: 1012px)': {
+    height: 160,
+  },
 });
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function

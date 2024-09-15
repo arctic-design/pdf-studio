@@ -6,6 +6,9 @@ import {
   Tooltip,
   useSnackbar,
   ConfirmationModal,
+  Grid,
+  GridRow,
+  GridColumn,
 } from '@arctic-kit/snow';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,14 +27,13 @@ import {
 } from '@arctic-kit/icons';
 
 const Container = styled.div({
-  backgroundColor: '#f5f5f5',
-  height: '100%',
+  height: 'calc(100% - var(--header-height))',
   display: 'flex',
+  flex: 1,
 });
 
 const CapabilityPanel = styled.div({
-  width: '40%',
-  maxWidth: 620,
+  height: '100%',
   transition: 'all 0.25s ease',
   backgroundColor: 'var(--snow-colors-neutral-0)',
   display: 'flex',
@@ -40,20 +42,34 @@ const CapabilityPanel = styled.div({
   button: {
     display: 'block',
   },
+});
 
-  borderRight: '1px solid rgb(229, 234, 242)',
+const CapabilityPanelColumn = styled(GridColumn)({
+  '@media (max-width: 1012px)': {
+    maxHeight: '40%',
+    overflowY: 'auto',
+  },
+});
+
+const CanvasPanelColumn = styled(GridColumn)({
+  '@media (max-width: 1012px)': {
+    minHeight: '60%',
+  },
 });
 
 const CanvasPanel = styled.div({
-  backgroundColor: 'var(--snow-colors-grey-900)',
+  backgroundColor: 'var(--canvas-panel-bg)',
   flex: 1,
   display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 const EmptyContainer = styled.div({
-  backgroundColor: 'var(--snow-colors-grey-900)',
+  backgroundColor: 'var(--canvas-panel-bg)',
+  color: 'var(--snow-colors-white)',
   display: 'flex',
-  // max-width: 400px;
   padding: '24px 32px',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -61,11 +77,25 @@ const EmptyContainer = styled.div({
   gap: 8,
   borderRadius: 4,
   border: '1px solid var(--snow-colors-grey-800)',
-  margin: '400px auto',
   svg: {
-    color: 'var(--snow-colors-neutral-0)',
+    color: 'var(--snow-colors-white)',
     fontSize: 20,
   },
+});
+
+const FrameContainer = styled.iframe<{ showFrame?: boolean }>({
+  width: 'calc(100% - 40px)',
+  margin: 20,
+  display: 'none',
+  height: '100%',
+  variants: [
+    {
+      props: { showFrame: true },
+      style: {
+        display: 'block',
+      },
+    },
+  ],
 });
 
 type ViewModeType = 'pdfjs' | 'default';
@@ -396,111 +426,116 @@ export function Studio() {
 
   return (
     <Container>
-      <CapabilityPanel>
-        <DroppableFileUpload
-          onUploadFiles={(files) => onMultipleFileUpload(files)}
-        />
+      <Grid style={{ display: 'flex', padding: 0 }}>
+        <GridRow style={{ flex: 1 }}>
+          <CapabilityPanelColumn md={12} lg={4}>
+            <CapabilityPanel>
+              <DroppableFileUpload
+                onUploadFiles={(files) => onMultipleFileUpload(files)}
+              />
 
-        <Box
-          sx={{
-            borderTop: '0.5px solid grey',
-          }}
-        >
-          <Box
-            sx={{
-              fontWeight: 'bold',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: 12,
-              marginBlock: 12,
-            }}
-          >
-            <Box as="span">Documents</Box>
-            <Switch
-              label="Use PDF.Js Viewer"
-              checked={viewMode === 'pdfjs'}
-              onToggle={() => {
-                onPdfModeToggle();
-              }}
-            />
-          </Box>
-          {showPdfActions && (
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                gap: 12,
-                padding: 8,
-              }}
-            >
-              {selectedFileCount > 0 && (
-                <>
-                  <Tooltip
-                    message={`Preview ${selectedFileCount} selected file bundle`}
+              <Box
+                sx={{
+                  borderTop: '0.5px solid grey',
+                }}
+              >
+                <Box
+                  sx={{
+                    fontWeight: 'bold',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: 12,
+                    marginBlock: 12,
+                  }}
+                >
+                  <Box as="span">Documents</Box>
+                  <Switch
+                    label="Use PDF.Js Viewer"
+                    checked={viewMode === 'pdfjs'}
+                    onToggle={() => {
+                      onPdfModeToggle();
+                    }}
+                  />
+                </Box>
+                {showPdfActions && (
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      alignItems: 'center',
+                      gap: 12,
+                      padding: 8,
+                    }}
                   >
-                    <IconButton onClick={onPreviewBundle}>
-                      <DocumentIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip
-                    message={`Delete ${selectedFileCount} selected file(s)`}
-                  >
-                    <IconButton onClick={onDeleteSelectedFilesAction}>
-                      <TrashIcon />
-                    </IconButton>
-                  </Tooltip>
-                </>
+                    {selectedFileCount > 0 && (
+                      <>
+                        <Tooltip
+                          message={`Preview ${selectedFileCount} selected file bundle`}
+                        >
+                          <IconButton onClick={onPreviewBundle}>
+                            <DocumentIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip
+                          message={`Delete ${selectedFileCount} selected file(s)`}
+                        >
+                          <IconButton onClick={onDeleteSelectedFilesAction}>
+                            <TrashIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </>
+                    )}
+
+                    <Tooltip message={'Toggle All'}>
+                      <IconButton onClick={onToggleAll}>
+                        <AdjustmentsHorizontalIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                )}
+
+                <Box>
+                  <FileList
+                    selectedFileId={selectedFileId}
+                    files={allFiles}
+                    onAction={onActionHandler}
+                    moveFile={onMoveFile}
+                    onCheckedChange={onCheckedChangeHandler}
+                    checkedFiles={checkedFiles}
+                  />
+                </Box>
+              </Box>
+            </CapabilityPanel>
+          </CapabilityPanelColumn>
+          <CanvasPanelColumn md={12} lg={8}>
+            <CanvasPanel>
+              {allFiles.length === 0 && (
+                <EmptyContainer>
+                  <XMarkIcon />
+                  <Box sx={{ fontWeight: 500, fontSize: 14 }}>
+                    No files uploaded yet
+                  </Box>
+                  <Box sx={{ fontWeight: 400, fontSize: 14 }}>
+                    There are no files to display. Once a file is added, it will
+                    be shown here.
+                  </Box>
+                  <Box sx={{ fontWeight: 400, fontSize: 14 }}>
+                    Upload your first file on the left.
+                  </Box>
+                </EmptyContainer>
               )}
+              <FrameContainer
+                ref={previewFrameRef}
+                id="pdfFrameWithFile"
+                showFrame={allFiles.length > 0}
+                title="Redacted PDF"
+              />
+            </CanvasPanel>
+          </CanvasPanelColumn>
+        </GridRow>
+      </Grid>
 
-              <Tooltip message={'Toggle All'}>
-                <IconButton onClick={onToggleAll}>
-                  <AdjustmentsHorizontalIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          )}
-
-          <Box>
-            <FileList
-              selectedFileId={selectedFileId}
-              files={allFiles}
-              onAction={onActionHandler}
-              moveFile={onMoveFile}
-              onCheckedChange={onCheckedChangeHandler}
-              checkedFiles={checkedFiles}
-            />
-          </Box>
-        </Box>
-      </CapabilityPanel>
-      <CanvasPanel>
-        {allFiles.length === 0 && (
-          <EmptyContainer>
-            <XMarkIcon />
-            <Box sx={{ fontWeight: 500, color: '#F4F5F5', fontSize: 14 }}>
-              No files uploaded yet
-            </Box>
-            <Box sx={{ fontWeight: 400, color: '#D6D8DB', fontSize: 14 }}>
-              There are no files to display. Once a file is added, it will be
-              shown here.
-            </Box>
-            <Box sx={{ fontWeight: 400, color: '#D6D8DB', fontSize: 14 }}>
-              Upload your first file on the left.
-            </Box>
-          </EmptyContainer>
-        )}
-        <iframe
-          ref={previewFrameRef}
-          id="pdfFrameWithFile"
-          style={{
-            width: 'calc(100% - 40px)',
-            margin: 20,
-            display: allFiles.length > 0 ? 'block' : 'none',
-          }}
-          title="Redacted PDF"
-        />
-      </CanvasPanel>
       <Modal
         open={showPreviewBundleModal}
         onOpenChange={(open) => onModalOpenChange(open)}

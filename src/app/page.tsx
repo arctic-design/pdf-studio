@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { AppStudio } from 'src/components/AppStudio';
+import { Header } from 'src/components/Header';
 import { Loading } from 'src/components/Loading';
 
 export default function Index() {
@@ -9,8 +10,11 @@ export default function Index() {
    * Note: The corresponding styles are in the ./index.scss file.
    */
   return (
-    <Suspense fallback={<Loading />}>
-      <AppStudio />
-    </Suspense>
+    <main>
+      <Header />
+      <Suspense fallback={<Loading />}>
+        <AppStudio />
+      </Suspense>
+    </main>
   );
 }
