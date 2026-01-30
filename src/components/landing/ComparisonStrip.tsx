@@ -1,4 +1,5 @@
-import { Crown, Minus } from 'lucide-react';
+import { Minus } from 'lucide-react';
+import { Logo } from '../shared/Logo';
 
 interface ComparisonPoint {
   category: string;
@@ -61,9 +62,7 @@ export function ComparisonStrip() {
           <div className="rounded-2xl border border-blue-200 bg-gradient-to-b from-blue-50 to-white p-1 shadow-md dark:border-blue-800 dark:from-gray-900 dark:to-gray-900 dark:shadow-lg dark:shadow-blue-950/40">
             <div className="rounded-xl bg-white p-6 dark:bg-gray-900">
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-md shadow-blue-600/25">
-                  <Crown className="h-4 w-4 text-white" />
-                </div>
+                <Logo size="md" className="rounded-xl" />
                 <div>
                   <h3 className="text-sm font-bold text-gray-900 dark:text-white">PDF Studio</h3>
                   <p className="text-[11px] text-blue-600 dark:text-blue-400">What you get</p>

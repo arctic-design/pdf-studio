@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FileText, Heart, ExternalLink, Sun, Moon } from 'lucide-react';
+import { Heart, ExternalLink, Sun, Moon } from 'lucide-react';
+import { Logo } from '../shared/Logo';
 import { useTheme } from 'next-themes';
 
 const footerLinks = {
@@ -48,9 +49,7 @@ export function Footer() {
           {/* Brand column */}
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-md shadow-blue-600/20">
-                <FileText className="h-4 w-4 text-white" />
-              </div>
+              <Logo size="md" className="rounded-xl" />
               <span className="text-lg font-bold text-gray-900 dark:text-white">
                 PDF Studio
               </span>

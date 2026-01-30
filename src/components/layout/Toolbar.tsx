@@ -17,10 +17,10 @@ import {
   PanelRightOpen,
   Search,
   Plus,
-  FileText,
   EllipsisVertical,
 } from 'lucide-react';
 import { ThemeToggle } from '../shared/ThemeToggle';
+import { Logo } from '../shared/Logo';
 import { useDocumentStore } from '../../stores/useDocumentStore';
 import { useUIStore } from '../../stores/useUIStore';
 import { useHistoryStore } from '../../stores/useHistoryStore';
@@ -178,9 +178,7 @@ export function Toolbar({ onExport, onUpload }: ToolbarProps) {
           href="/"
           className="mr-1 flex items-center gap-2 rounded-[3px] px-1.5 py-1 hover:bg-toolbar-foreground/[0.07]"
         >
-          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-blue-600">
-            <FileText className="h-3 w-3 text-white" />
-          </div>
+          <Logo size="sm" />
           <span className="hidden text-[13px] font-medium sm:inline">PDF Studio</span>
         </Link>
       </div>
