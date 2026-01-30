@@ -13,8 +13,8 @@ export function useFileUpload() {
   const addPages = useDocumentStore((s) => s.addPages);
   const setProcessing = useDocumentStore((s) => s.setProcessing);
 
-  const fileReaderWorker = useRef<Worker>();
-  const fileConversionWorker = useRef<Worker>();
+  const fileReaderWorker = useRef<Worker>(null);
+  const fileConversionWorker = useRef<Worker>(null);
   const pendingCount = useRef(0);
 
   useEffect(() => {

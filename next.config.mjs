@@ -9,10 +9,6 @@ const nextConfig = {
   nx: {
     svgr: false,
   },
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     // Prevent pdf.js worker from being processed by webpack
