@@ -28,7 +28,22 @@ export function SmoothScrollProvider({
     }
     requestAnimationFrame(raf);
 
+    // Intercept anchor link clicks for smooth scrolling
+    function handleAnchorClick(e: MouseEvent) {
+      const target = (e.target as HTMLElement).closest('a[href^="#"]');
+      if (!target) return;
+      const hash = (target as HTMLAnchorElement).getAttribute('href');
+      if (!hash || hash === '#') return;
+      const el = document.querySelector(hash);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el as HTMLElement, { offset: -20 });
+    }
+
+    document.addEventListener('click', handleAnchorClick);
+
     return () => {
+      document.removeEventListener('click', handleAnchorClick);
       lenis.destroy();
       lenisRef.current = null;
     };

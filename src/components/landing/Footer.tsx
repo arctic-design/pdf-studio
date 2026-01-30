@@ -13,9 +13,8 @@ const footerLinks = {
     { label: 'Privacy', href: '#privacy' },
   ],
   resources: [
-    { label: 'GitHub', href: '#', external: true },
-    { label: 'Changelog', href: '#' },
-    { label: 'License', href: '#' },
+    { label: 'GitHub', href: 'https://github.com/arctic-design/pdf-studio', external: true },
+    { label: 'Portfolio', href: 'https://www.barunprasad.com', external: true },
   ],
 };
 
@@ -138,7 +137,15 @@ export function Footer() {
           <p className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
             Made with
             <Heart className="h-3 w-3 text-red-500" fill="currentColor" />
-            by Barun Prasad
+            by{' '}
+            <a
+              href="https://www.barunprasad.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 underline decoration-gray-300 underline-offset-2 transition-colors hover:text-gray-900 dark:text-gray-300 dark:decoration-gray-600 dark:hover:text-white"
+            >
+              Barun Prasad
+            </a>
           </p>
         </div>
       </div>
