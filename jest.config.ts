@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'pdf-studio',
   preset: './jest.preset.js',
   transform: {

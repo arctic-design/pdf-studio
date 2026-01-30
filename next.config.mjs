@@ -1,42 +1,23 @@
 //@ts-check
 
 import { composePlugins, withNx } from '@nx/next';
-import { extendTheme, withPigment } from '@pigment-css/nextjs-plugin';
-import { createDefaultTheme } from '@arctic-kit/snow';
-
-const lightTheme = createDefaultTheme();
-const darkTheme = createDefaultTheme(true);
-
-const theme = extendTheme({
-  colorSchemes: {
-    light: lightTheme,
-    dark: darkTheme,
-  },
-  cssVarPrefix: 'snow',
-  getSelector: (colorScheme) =>
-    colorScheme ? `.theme-${colorScheme}` : ':root',
-});
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
   nx: {
-    // Set this to true if you would like to use SVGR
-    // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  output: 'export',
-  images: {
-    unoptimized: true,
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    // Prevent pdf.js worker from being processed by webpack
+    config.resolve.alias['pdfjs-dist/build/pdf.worker.mjs'] = false;
+    config.resolve.alias['pdfjs-dist/build/pdf.worker.min.mjs'] = false;
+    return config;
   },
 };
 
-const plugins = [
-  // Add more Next.js plugins to this list if needed.
-  withNx,
-];
+const plugins = [withNx];
 
-export default withPigment(composePlugins(...plugins)(nextConfig), {
-  theme,
-});
+export default composePlugins(...plugins)(nextConfig);
