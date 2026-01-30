@@ -1,8 +1,7 @@
 import { Inter } from 'next/font/google';
-
-import './global.scss';
-import '@pigment-css/react/styles.css';
-import '@arctic-kit/snow/style.css';
+import { ThemeProvider } from 'next-themes';
+import 'lenis/dist/lenis.css';
+import './globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -12,7 +11,8 @@ const inter = Inter({
 
 export const metadata = {
   title: 'PDF Studio',
-  description: 'Combine images and pdf to a single document',
+  description:
+    'Merge, split, rotate, watermark, compress and protect PDFs — all in your browser.',
 };
 
 export default function RootLayout({
@@ -21,8 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="theme-light">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

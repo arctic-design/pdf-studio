@@ -1,20 +1,24 @@
-import { Suspense } from 'react';
-import { AppStudio } from 'src/components/AppStudio';
-import { Header } from 'src/components/Header';
-import { Loading } from 'src/components/Loading';
+import { Hero } from '../components/landing/Hero';
+import { FeatureGrid } from '../components/landing/FeatureGrid';
+import { HowItWorks } from '../components/landing/HowItWorks';
+import { PrivacyBanner } from '../components/landing/PrivacyBanner';
+import { ComparisonStrip } from '../components/landing/ComparisonStrip';
+import { CallToAction } from '../components/landing/CallToAction';
+import { Footer } from '../components/landing/Footer';
+import { LandingWrapper } from '../components/landing/LandingWrapper';
 
-export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.scss file.
-   */
+export default function LandingPage() {
   return (
-    <main>
-      <Header />
-      <Suspense fallback={<Loading />}>
-        <AppStudio />
-      </Suspense>
-    </main>
+    <LandingWrapper>
+      <main className="min-h-screen dark:bg-gray-950">
+        <Hero />
+        <FeatureGrid />
+        <HowItWorks />
+        <PrivacyBanner />
+        <ComparisonStrip />
+        <CallToAction />
+        <Footer />
+      </main>
+    </LandingWrapper>
   );
 }
