@@ -4,7 +4,7 @@
   "author": "Barun Prasad",
   "license": "MIT",
   "scripts": {
-    "dev": "PORT=3002 nx dev",
+    "dev": "PORT=3025 nx dev",
     "build": "nx build",
     "start": "nx start",
     "test": "nx test"
@@ -17,7 +17,7 @@
     "@pigment-css/react": "^0.0.22",
     "framer-motion": "^11.5.4",
     "immutability-helper": "^3.1.1",
-    "next": "14.2.3",
+    "next": "14.2.35",
     "pdf-lib": "^1.17.1",
     "react": "18.3.1",
     "react-dnd": "^16.0.1",
@@ -28,17 +28,17 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@nx/eslint": "19.7.3",
-    "@nx/eslint-plugin": "19.7.3",
-    "@nx/jest": "19.7.3",
-    "@nx/js": "19.7.3",
-    "@nx/next": "19.7.3",
-    "@nx/workspace": "19.7.3",
+    "@nx/eslint": "22.4.3",
+    "@nx/eslint-plugin": "22.4.3",
+    "@nx/jest": "22.4.3",
+    "@nx/js": "22.4.3",
+    "@nx/next": "22.4.3",
+    "@nx/workspace": "22.4.3",
     "@pigment-css/nextjs-plugin": "^0.0.22",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "30.0.0",
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
@@ -46,25 +46,26 @@
     "@types/uuid": "^10",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
-    "babel-jest": "^29.7.0",
+    "babel-jest": "30.0.5",
     "eslint": "~8.57.0",
-    "eslint-config-next": "14.2.3",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-next": "15.5.9",
+    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "nx": "19.7.3",
+    "jest": "30.0.5",
+    "jest-environment-jsdom": "30.0.5",
+    "jest-util": "30.0.5",
+    "nx": "22.4.3",
     "prettier": "^2.6.2",
     "sass": "1.62.1",
-    "ts-jest": "^29.1.0",
+    "ts-jest": "29.4.6",
     "ts-node": "10.9.1",
-    "typescript": "~5.5.2"
+    "typescript": "5.9.3"
   },
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "yarn@4.4.1"
+  "packageManager": "yarn@4.12.0"
 }
